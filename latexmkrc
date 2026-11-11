@@ -5,15 +5,16 @@ my $graphics_dir = getcwd() . '/Graphics/Figures';
 
 find(
     sub {
-        return unless /\.tiff\z/i;
+        return if -d $_ || !/\.(?:jpg|jpeg|tiff|tif|gif)\z/i;
 
-        my $tiff = $File::Find::name;
-        (my $png = $tiff) =~ s/\.tiff\z/.png/i;
+        my $image = $File::Find::name;
 
-        return if -e $png && (stat($png))[9] >= (stat($tiff))[9];
+        (my $png = $image) =~ s/\.[^.]+\z/.png/i;
 
-        system('sips', '-s', 'format', 'png', $tiff, '--out', $png) == 0
-            or die "Could not convert $tiff to $png\n";
+        return if -e $png && (stat($png))[9] >= (stat($image))[9];
+
+        system('sips', '-s', 'format', 'png', $image, '--out', $png) == 0
+            or die "Could not convert $image to $png\n";
     },
     $graphics_dir
 );
