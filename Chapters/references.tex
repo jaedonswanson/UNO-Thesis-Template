@@ -1,1 +1,5 @@
-\printbibliography[heading=bibintoc,title={References}]
+\defbibheading{references}[\refname]{%
+    \section*{#1}%
+    \addcontentsline{toc}{section}{#1}%
+}
+\printbibliography[heading=references,title={References}]
