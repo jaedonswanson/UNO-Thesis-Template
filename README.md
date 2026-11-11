@@ -3,7 +3,7 @@ A reusable LaTeX starter for UNO theses. Confirm requirements with your departme
 
 ## PDF Preview
 
-View the compiled [![PDF preview](preview.png)](main.pdf)
+[View the PDF preview](example.pdf)
 
 ## A note on citations
 Zotero with the [better bibtex plugin](https://github.com/retorquere/zotero-better-bibtex) makes managing references way easier. Export the collection in the **Better BibLaTeX** format to `references.bib`. Update `packages.tex` to reflect your path to this file.
